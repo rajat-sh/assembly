@@ -1,4 +1,4 @@
-		; A program to clear the screen, it calls the subrouting clrscr which does not take any parameter and does not retuen anything only clears the screen
+		; A program to clear the screen, it calls the subroutine clrscr which does not take any parameter and does not return anything only clears the screen
 
 		[org 0x0100]
 		jmp start
