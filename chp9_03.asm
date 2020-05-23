@@ -88,7 +88,7 @@ borderAsterisk:		                push ax
 					mov bh, 0x07
 					mov bl, 0x20
 
-LefttoRight:		mov cx, 80
+LefttoRight:		                mov cx, 80
 
 l1:					mov [es:di], ax
 
@@ -105,7 +105,7 @@ l1:					mov [es:di], ax
 					sub di, 2
 
 
-RightToBottom:		mov cx, 24
+RightToBottom:		                mov cx, 24
 		
 l2:					mov [es:di+160], ax
 
@@ -122,7 +122,7 @@ l2:					mov [es:di+160], ax
 					
 
 
-BottomToLeft:		mov cx, 79
+BottomToLeft:		                mov cx, 79
 
 l3:					mov [es:di-2], ax
 
@@ -139,7 +139,7 @@ l3:					mov [es:di-2], ax
 					
 
 
-LefttoTop:			mov cx, 24
+LefttoTop:			        mov cx, 24
 		
 l4:					mov [es:di+160], ax
 
