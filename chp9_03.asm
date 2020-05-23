@@ -69,12 +69,10 @@ delay:					push ax
 
 
 
-borderAsterisk:		               push ax
+borderAsterisk:		                push ax
 					push bx
-				 
-					push cx  
-					
-					push di
+				        push cx  
+				        push di
 					push es
 
 
@@ -161,9 +159,9 @@ l4:					mov [es:di+160], ax
 					jmp LefttoRight
 
 
-return:				       pop es
-				       pop di
-				      pop cx
+return:				       	pop es
+				       	pop di
+				      	pop cx
 					pop bx
 					pop ax
 					
