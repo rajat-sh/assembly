@@ -7,7 +7,7 @@
 jmp start
 
 
-start:		call clrscr
+start:		        call clrscr
 
 			call borderAsterisk
 	
