@@ -51,7 +51,7 @@ clrscr: 	push ax
 
 
 ;Delay, Using OS services we can specify delay http://vitaly_filatov.tripod.com/ng/asm/asm_026.13.html
-delay:				pusha
+delay:				        pusha
 					MOV     CX, 0FH
 					MOV     DX, 4240H
 					MOV     AH, 86H
@@ -63,7 +63,7 @@ delay:				pusha
 
 
 
-borderAsterisk:		push bp
+borderAsterisk:		                push bp
 					mov bp, sp
 					pusha
 
@@ -80,7 +80,7 @@ borderAsterisk:		push bp
 					mov bh, 0x07
 					mov bl, 0x20
 
-LefttoRight:		mov cx, 80
+LefttoRight:		                mov cx, 80
 
 l1:					mov [es:di], ax
 
@@ -97,7 +97,7 @@ l1:					mov [es:di], ax
 					sub di, 2
 
 
-RightToBottom:		mov cx, 24
+RightToBottom:		               mov cx, 24
 		
 l2:					mov [es:di+160], ax
 
@@ -114,7 +114,7 @@ l2:					mov [es:di+160], ax
 					
 
 
-BottomToLeft:		mov cx, 79
+BottomToLeft:		                mov cx, 79
 
 l3:					mov [es:di-2], ax
 
@@ -131,7 +131,7 @@ l3:					mov [es:di-2], ax
 					
 
 
-LefttoTop:			mov cx, 24
+LefttoTop:			       mov cx, 24
 		
 l4:					mov [es:di+160], ax
 
@@ -151,7 +151,7 @@ l4:					mov [es:di+160], ax
 					jmp LefttoRight
 
 
-return:				popa
+return:				        popa
 					pop bp
 					ret
 
