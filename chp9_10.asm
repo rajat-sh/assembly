@@ -71,7 +71,9 @@
 			mov [es:0x08*4+2], ax ; restore old timer ISR segment
 
 
-                       mov byte [flag], 0
+                        mov byte [flag], 0
+		       	jmp exit
+
 
 			nomatch: popa
 			jmp far [cs:oldkb]
