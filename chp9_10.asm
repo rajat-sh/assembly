@@ -1,3 +1,8 @@
+;A keyboard interrupt handler that disables the timer interrupt (no timer interrupt should come) while Q is pressed. 
+;It will be reenabled as soon as Q is released
+
+
+
 [org 0x0100]
 
 
@@ -8,7 +13,7 @@
 			oldtimer: dd 0 ; space for saving old isr
 			oldkb: dd 0
 
-		timer:  mov al, 0x20
+			timer:  mov al, 0x20
 			out 0x20, al ; send EOI to PIC
 
 			iret
@@ -17,7 +22,7 @@
 
 
 
-kbisr: pusha
+			kbisr: pusha
 			push cs
 			pop ds
 
@@ -73,51 +78,14 @@ kbisr: pusha
 
 
 
-		exit: mov al, 0x20
+			exit: mov al, 0x20
 			out 0x20, al ; send EOI to PIC
 			popa
 			iret ; return from interrupt	
 
 
 
-			
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-start: xor ax, ax
+			start: xor ax, ax
 			mov es, ax ; point es to IVT base
 			mov ax, [es:9*4]
 			mov [oldkb], ax ; save offset of old routine
@@ -143,3 +111,35 @@ start: xor ax, ax
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
