@@ -11,74 +11,74 @@
 
 
  
-clrscr:         push ax
-                push es
-                push di
+			clrscr:         push ax
+                	push es
+                	push di
 
-                mov ax, 0xb800  ; initilize the ax register with video memory base address
-                mov es, ax ; point es to video memory base address loaded from ax
+                	mov ax, 0xb800  ; initilize the ax register with video memory base address
+                	mov es, ax ; point es to video memory base address loaded from ax
 
-                ; point di to the first video memory location 0
+                	; point di to the first video memory location 0
 
-                xor di, di
+                	xor di, di
 
-                ; There are 2000 locations on screen, so we need to write 2000 memory locations for clear screen opeartion, we will inilialze the cx register with 2000
-                mov cx, 2000
-
-
-                ; move into ax register the value of white space with normal video attribute byte
-
-                mov ax, 0x0720
-
-                ; clear the direction flag as we need to increment the di register with every iteration
+                	; There are 2000 locations on screen, so we need to write 2000 memory locations for clear screen opeartion, we will inilialze the cx register with 2000
+                	mov cx, 2000
 
 
-                rep stosw
+                	; move into ax register the value of white space with normal video attribute byte
+
+                	mov ax, 0x0720
+
+                	; clear the direction flag as we need to increment the di register with every iteration
+
+
+                	rep stosw
 
           
-                pop di
-                pop es
-                pop ax
+                	pop di
+                	pop es
+                	pop ax
         
-                ret
+                	ret
 
 
 
 
 
 			kbisr: pusha
-			       push cs
-				pop ds
+			push cs
+			pop ds
 
 
 
-				in al, 0x60 ; read char from keyboard port
-				cmp al, 0x1d ; has the left control key pressed
+			in al, 0x60 ; read char from keyboard port
+			cmp al, 0x1d ; has the left control key pressed
 				
-				jne nextcmp
+			jne nextcmp
 
                                 
-                    cmp byte [flag], 1
-		    je exit
+                    	cmp byte [flag], 1
+		    	je exit
 		    
-		    mov ax, 0xb800
+		    	mov ax, 0xb800
                         mov es, ax
                         mov si, 0
                         mov di, array
                         mov cx, 2000
 
 
-                loop1:  mov ax, [es:si]
+                	loop1:  mov ax, [es:si]
                         mov [ds:di], ax
                         add si, 2
                         add di, 2
                         loop loop1
 
-                call     clrscr
+                	call     clrscr
 		
-		mov byte [flag], 1
+			mov byte [flag], 1
 		
-		jmp exit
+			jmp exit
 
 
 
@@ -86,17 +86,17 @@ clrscr:         push ax
 			jne nomatch ; no, chain to old ISR
 			
 
-			 mov cx, 2000
-                mov si, array
-                mov di, 0
+			mov cx, 2000
+                	mov si, array
+                	mov di, 0
 
-                loop2:  mov ax, [ds:si]
+                	loop2:  mov ax, [ds:si]
                         mov [es:di], ax
                         add si, 2
                         add di, 2
                         loop loop2
 
-                mov byte [flag], 0
+                       mov byte [flag], 0
 
 
 			nomatch: popa
