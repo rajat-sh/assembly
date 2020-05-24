@@ -77,6 +77,8 @@
 
 
                         mov byte [flag], 0
+			jmp exit
+
 
 			nomatch: popa
 			jmp far [cs:oldkb]
