@@ -1,5 +1,4 @@
-;A keyboard interrupt handler that disables the disk interrupt (no disk interrupt should come) while Q is pressed. 
-;It will be reenabled as soon as Q is released
+;A TSR to disable all writes to the hard disk when F10 is pressed and reenable when pressed again like a toggle.
 
 
 
@@ -77,7 +76,7 @@
 			mov [es:0x15*4+2], ax ; restore old disk ISR segment
 
 
-                       mov byte [flag], 0
+                        mov byte [flag], 0
 
 			nomatch: popa
 			jmp far [cs:oldkb]
