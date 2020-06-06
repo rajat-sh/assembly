@@ -73,7 +73,7 @@ clrscr: 	push ax
 
 				popa
 				pop bp
-				ret 10
+				ret 8
 				
 
 
