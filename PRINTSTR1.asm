@@ -1,4 +1,4 @@
-; A Program to print a sring on screen. It takes row number, column number, address of string and length of string as parameters in same order.
+; A Program to print a string on screen. It takes row number, column number, address of string and length of string as parameters in same order.
 
 
 				[org 0x0100]
