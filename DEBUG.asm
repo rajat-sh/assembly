@@ -1,4 +1,5 @@
-                                                        [org 0x0100]
+; Elementary debugger using breakpoint interrupt                 
+		 					[org 0x0100]
 
                                                         jmp start
                                         opcode:         db 0
@@ -14,24 +15,24 @@
 
 
 			clrscr: 		push ax
-											push es
-											push di
+						push es
+						push di
 					
-											mov ax, 0xb800  ; initilize the ax register with video memory base address
-											mov es, ax ; point es to video memory base address loaded from ax
+						mov ax, 0xb800  ; initilize the ax register with video memory base address
+						mov es, ax ; point es to video memory base address loaded from ax
 					
-											; point di to the first video memory location 0
+						; point di to the first video memory location 0
 					
-											xor di, di
+						xor di, di
 					
-										mov cx, 2000
+						mov cx, 2000
 
 
-										; move into ax register the value of white space with normal video attribute byte
+						; move into ax register the value of white space with normal video attribute byte
 				
-										mov ax, 0x0720
+						mov ax, 0x0720
 
-										; clear the direction flag as we need to increment the di register with every iteration
+						; clear the direction flag as we need to increment the di register with every iteration
 
 
 										rep stosw
