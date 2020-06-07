@@ -35,17 +35,17 @@
 						; clear the direction flag as we need to increment the di register with every iteration
 
 
-										rep stosw
+						rep stosw
 
 
-										pop di
-										pop es
-										pop ax
+						pop di
+						pop es
+						pop ax
 			
-										ret			        
+						ret			        
 
 
-		printnum:             push bp
+		printnum:            		push bp
 						mov bp, sp
 						pusha
 
@@ -94,7 +94,7 @@
 
 
 
-		printstr: 	push bp
+		printstr: 			push bp
 						mov bp, sp
 						pusha
 
